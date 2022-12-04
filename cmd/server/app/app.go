@@ -7,7 +7,7 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/gaulzhw/go-server/cmd/server/app/options"
-	"github.com/gaulzhw/go-server/pkg/features"
+	"github.com/gaulzhw/go-server/internal/features"
 )
 
 func NewServerCommand() *cobra.Command {

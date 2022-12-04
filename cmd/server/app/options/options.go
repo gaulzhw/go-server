@@ -7,20 +7,20 @@ import (
 	cliflag "k8s.io/component-base/cli/flag"
 	"k8s.io/component-base/logs"
 
-	"github.com/gaulzhw/go-server/pkg/features"
-	"github.com/gaulzhw/go-server/pkg/options"
+	"github.com/gaulzhw/go-server/internal/features"
+	internaloptions "github.com/gaulzhw/go-server/internal/options"
 )
 
 type Options struct {
-	Server *options.ServerOptions
-	MySQL  *options.MySQLOptions
+	Server *internaloptions.ServerOptions
+	MySQL  *internaloptions.MySQLOptions
 	Logs   *logs.Options
 }
 
 func NewOptions() *Options {
 	return &Options{
-		Server: options.NewServerOptions(),
-		MySQL:  options.NewMySQLOptions(),
+		Server: internaloptions.NewServerOptions(),
+		MySQL:  internaloptions.NewMySQLOptions(),
 		Logs:   logs.NewOptions(),
 	}
 }

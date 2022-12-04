@@ -7,7 +7,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/pflag"
 
-	"github.com/gaulzhw/go-server/pkg/server"
+	"github.com/gaulzhw/go-server/internal/server"
 )
 
 type ServerOptions struct {
