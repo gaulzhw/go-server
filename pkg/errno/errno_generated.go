@@ -3,6 +3,6 @@
 package errno
 
 func init() {
-	register(SUCCESS, 200, "OK")
+	register(Success, 200, "OK")
 	register(ErrUnknown, 500, "Internal server error")
 }

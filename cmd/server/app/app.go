@@ -52,5 +52,17 @@ func NewServerCommand() *cobra.Command {
 }
 
 func run(opts *options.Options) error {
-	return nil
+	mysqlClient, err := opts.MySQL.NewClient()
+	if err != nil {
+		return err
+	}
+
+	server, err := opts.Server.NewServer()
+	if err != nil {
+		return err
+	}
+
+	server.InjectStoreFactory(mysqlClient)
+
+	return server.Start()
 }

@@ -8,6 +8,6 @@
 
 | Identifier | Code | HTTP Code | Description |
 | ---------- | ---- | --------- | ----------- |
-| SUCCESS | 100001 | 200 | OK |
+| Success | 100001 | 200 | OK |
 | ErrUnknown | 100002 | 500 | Internal server error |
 

@@ -15,8 +15,6 @@ type ServerOptions struct {
 	CertDir string
 }
 
-var _ options = (*ServerOptions)(nil)
-
 func NewServerOptions() *ServerOptions {
 	return &ServerOptions{}
 }

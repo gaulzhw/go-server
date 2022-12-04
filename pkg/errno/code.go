@@ -7,7 +7,15 @@ import (
 )
 
 var (
-	validCodes = []int{http.StatusOK, http.StatusBadRequest, http.StatusInternalServerError}
+	validCodes = []int{
+		http.StatusOK,                  // 200
+		http.StatusBadRequest,          // 400
+		http.StatusUnauthorized,        // 401
+		http.StatusPaymentRequired,     // 402
+		http.StatusForbidden,           // 403
+		http.StatusNotFound,            // 404
+		http.StatusInternalServerError, // 500
+	}
 
 	unknownCoder = &errCode{C: 1, HTTP: http.StatusInternalServerError, Ext: "An internal server error occurred"}
 )
