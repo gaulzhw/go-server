@@ -8,19 +8,19 @@ import (
 	"github.com/gaulzhw/go-server/internal/store/mysql/user"
 )
 
-type mysqlStore struct {
+type mysqlStoreFactory struct {
 	db *gorm.DB
 
 	user store.User
 }
 
-var _ store.Factory = (*mysqlStore)(nil)
+var _ store.Factory = (*mysqlStoreFactory)(nil)
 
-func (ds *mysqlStore) Users() store.User {
+func (ds *mysqlStoreFactory) Users() store.User {
 	return ds.user
 }
 
-func (ds *mysqlStore) Close() error {
+func (ds *mysqlStoreFactory) Close() error {
 	db, err := ds.db.DB()
 	if err != nil {
 		return errors.Wrap(err, "get gorm db instance failed")
@@ -28,9 +28,9 @@ func (ds *mysqlStore) Close() error {
 	return db.Close()
 }
 
-// NewStore create mysql store with the given config.
-func NewStore(db *gorm.DB) (store.Factory, error) {
-	store := &mysqlStore{
+// NewStoreFactory create mysql store with the given config.
+func NewStoreFactory(db *gorm.DB) (store.Factory, error) {
+	store := &mysqlStoreFactory{
 		db:   db,
 		user: user.NewStore(db),
 	}

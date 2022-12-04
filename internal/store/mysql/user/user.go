@@ -3,17 +3,17 @@ package user
 import (
 	"gorm.io/gorm"
 
-	globalstore "github.com/gaulzhw/go-server/internal/store"
+	interfacestore "github.com/gaulzhw/go-server/internal/store"
 )
 
-type Store struct {
+type store struct {
 	db *gorm.DB
 }
 
-var _ globalstore.User = (*Store)(nil)
+var _ interfacestore.User = (*store)(nil)
 
-func NewStore(db *gorm.DB) globalstore.User {
-	return &Store{
+func NewStore(db *gorm.DB) interfacestore.User {
+	return &store{
 		db: db,
 	}
 }

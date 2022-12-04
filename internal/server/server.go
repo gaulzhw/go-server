@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/gaulzhw/go-server/internal/controller/v1/user"
+	ctrlv1 "github.com/gaulzhw/go-server/internal/controller/v1"
 	"github.com/gaulzhw/go-server/internal/store"
 	"github.com/gaulzhw/go-server/pkg/core"
 	"github.com/gaulzhw/go-server/pkg/errno"
@@ -74,12 +74,13 @@ func (s *Server) router() http.Handler {
 	// middleware
 	v1 := r.Group("/api/v1")
 	{
+		controller := ctrlv1.NewController(s.factory)
+
 		// user RESTful resources
 		userv1 := v1.Group("/users")
 		{
-			userController := user.NewController(s.factory)
-			userv1.GET(":name", userController.Get)
-			userv1.POST("", userController.Create)
+			userv1.GET(":name", controller.Users().Get)
+			userv1.POST("", controller.Users().Create)
 		}
 	}
 

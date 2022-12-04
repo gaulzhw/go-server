@@ -1,4 +1,4 @@
-package store
+package v1
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	metav1 "github.com/gaulzhw/go-server/pkg/meta/v1"
 )
 
-// User defines the user storage interface.
+// User defines the user service interface.
 type User interface {
 	Get(ctx context.Context, username string, opts metav1.GetOptions) (*apisv1.User, error)
 	Create(ctx context.Context, user *apisv1.User, opts metav1.CreateOptions) error

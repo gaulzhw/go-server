@@ -76,5 +76,5 @@ func (o *MySQLOptions) NewClient() (store.Factory, error) {
 	// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
 	sqlDB.SetMaxIdleConns(o.MaxIdleConnections)
 
-	return mysqlstore.NewStore(db)
+	return mysqlstore.NewStoreFactory(db)
 }

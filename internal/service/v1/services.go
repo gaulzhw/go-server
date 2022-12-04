@@ -5,17 +5,23 @@ import (
 	"github.com/gaulzhw/go-server/internal/store"
 )
 
-type Service struct {
-	users *user.Service
+type Service interface {
+	Users() User
 }
 
+type service struct {
+	users User
+}
+
+var _ Service = (*service)(nil)
+
 // NewService returns Service interface.
-func NewService(store store.Factory) *Service {
-	return &Service{
+func NewService(store store.Factory) Service {
+	return &service{
 		users: user.NewService(store),
 	}
 }
 
-func (s *Service) Users() *user.Service {
+func (s *service) Users() User {
 	return s.users
 }
