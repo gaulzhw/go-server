@@ -8,6 +8,7 @@ import (
 
 	"github.com/gaulzhw/go-server/cmd/server/app/options"
 	"github.com/gaulzhw/go-server/internal/features"
+	"github.com/gaulzhw/go-server/pkg/signal"
 )
 
 func NewServerCommand() *cobra.Command {
@@ -63,6 +64,6 @@ func run(opts *options.Options) error {
 	}
 
 	server.InjectStoreFactory(mysqlClient)
-
+	signal.NewContextWithFuncs(server.Stop).SignalHandler()
 	return server.Start()
 }
