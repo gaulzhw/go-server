@@ -7,7 +7,6 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/gaulzhw/go-server/cmd/server/app/options"
-	"github.com/gaulzhw/go-server/internal/features"
 	"github.com/gaulzhw/go-server/pkg/signal"
 )
 
@@ -43,8 +42,6 @@ func NewServerCommand() *cobra.Command {
 	for _, f := range namedFlagSets.FlagSets {
 		fs.AddFlagSet(f)
 	}
-
-	features.SetDefaultFeatureGates()
 
 	cols, _, _ := term.TerminalSize(cmd.OutOrStdout())
 	cliflag.SetUsageAndHelpFunc(cmd, namedFlagSets, cols)

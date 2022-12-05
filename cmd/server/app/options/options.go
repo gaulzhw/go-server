@@ -38,6 +38,15 @@ func (o *Options) Flags() cliflag.NamedFlagSets {
 }
 
 func (o *Options) Complete() error {
+	features.SetDefaultFeatureGates()
+
+	if err := o.Server.Complete(); err != nil {
+		return err
+	}
+	if err := o.MySQL.Complete(); err != nil {
+		return err
+	}
+
 	return nil
 }
 

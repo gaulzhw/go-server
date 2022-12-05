@@ -44,6 +44,10 @@ func (o *MySQLOptions) AddFlags(fs *pflag.FlagSet) {
 		"Maximum connection life time allowed to connect to mysql. Default to 10s.")
 }
 
+func (o *MySQLOptions) Complete() error {
+	return nil
+}
+
 func (o *MySQLOptions) Validate() []error {
 	var errs []error
 	return errs

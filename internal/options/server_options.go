@@ -26,6 +26,10 @@ func (o *ServerOptions) AddFlags(fs *pflag.FlagSet) {
 		"The directory of cert to use, use tls.crt and tls.key as certificates. Default to disable https.")
 }
 
+func (o *ServerOptions) Complete() error {
+	return nil
+}
+
 func (o *ServerOptions) Validate() []error {
 	var errs []error
 
