@@ -1,7 +1,6 @@
 package user
 
 import (
-	svcv1 "github.com/gaulzhw/go-server/internal/service/v1"
 	"github.com/gaulzhw/go-server/internal/store"
 )
 
